@@ -1,0 +1,31 @@
+﻿{
+  "hosts": [
+    {
+      "name": "lana-laptop",
+      "type": "local-network",
+      "host": "REPLACE_LAPTOP_IP",
+      "port": 22,
+      "user": "REPLACE_USER",
+      "key_path": "C:\\Carpuncle Cloud\\LanaApp\\ssh\\lana_laptop_ed25519",
+      "description": "Laptop im Heimnetz"
+    },
+    {
+      "name": "fritzbox",
+      "type": "network",
+      "host": "fritz.box",
+      "port": 22,
+      "user": "REPLACE_USER",
+      "key_path": "C:\\Carpuncle Cloud\\LanaApp\\ssh\\fritzbox_ed25519",
+      "description": "FritzBox / NAS Zugriff"
+    },
+    {
+      "name": "lana-gcp",
+      "type": "cloud-optional",
+      "host": "REPLACE_GCP_IP",
+      "port": 22,
+      "user": "REPLACE_USER",
+      "key_path": "C:\\Carpuncle Cloud\\LanaApp\\ssh\\lana_gcp_ed25519",
+      "description": "Optionale GCP Instanz"
+    }
+  ]
+}

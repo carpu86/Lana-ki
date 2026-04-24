@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: lana-sync
+created: 2026-04-14T21:57:11+02:00

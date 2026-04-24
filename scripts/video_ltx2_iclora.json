@@ -1,0 +1,39 @@
+{
+  "3": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 8675309,
+      "steps": 20,
+      "cfg": 3.0,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": ["4", 0],
+      "positive": ["6", 0],
+      "negative": ["7", 0],
+      "latent_image": ["5", 0]
+    }
+  },
+  "4": {
+    "class_type": "LTXICLoRALoaderModelOnly",
+    "inputs": {
+      "lora_name": "ltx-2.3-22b-distilled-lora-384.safetensors",
+      "strength_model": 1.0,
+      "reference_image": ["10", 0]
+    }
+  },
+  "5": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "batch_size": 97,
+      "width": 512,
+      "height": 512
+    }
+  },
+  "6": { "class_type": "CLIPTextEncode", "inputs": { "text": "score_9, score_8_up, rating_explicit, 1girl, Lana, completely naked, extremely detailed, highly realistic motion", "clip": ["11", 1] } },
+  "7": { "class_type": "CLIPTextEncode", "inputs": { "text": "score_4, score_5, score_6, worst quality, deformed, blurry, clothing, censoring", "clip": ["11", 1] } },
+  "8": { "class_type": "TiledVAEDecode", "inputs": { "samples": ["3", 0], "vae": ["11", 2], "tile_size": 256 } },
+  "9": { "class_type": "SaveVideo", "inputs": { "filename_prefix": "lana_explicit_motion", "fps": 16, "images": ["8", 0] } },
+  "10": { "class_type": "LoadImage", "inputs": { "image": "lana_master_reference.png" } },
+  "11": { "class_type": "CheckpointLoaderSimple", "inputs": { "ckpt_name": "ltx-2.3-22b-dev-fp8.safetensors" } }
+}

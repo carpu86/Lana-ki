@@ -1,0 +1,53 @@
+{
+  "gemini": {
+    "active_keys": [
+      "GEMINI_API_KEY_PROJECT_91800041898"
+    ],
+    "invalid_keys": [
+      "GEMINI_API_KEY_PROJECT_639519121681",
+      "GEMINI_API_KEY_DEFAULT",
+      "GEMINI_API_KEY_PROJECT_1010693572064",
+      "GEMINI_API_KEY_PROJECT_884537673606_2",
+      "GEMINI_API_KEY_PROJECT_958751639906",
+      "GEMINI_API_KEY_LANA_API",
+      "GEMINI_API_KEY_PROJECT_884537673606_1",
+      "GEMINI_API_KEY_PROJECT_377008358921"
+    ]
+  },
+  "xai": {
+    "active_keys": [],
+    "invalid_keys": [
+      "XAI_API_KEY_3",
+      "XAI_API_KEY_4",
+      "XAI_API_KEY_2",
+      "XAI_API_KEY_1"
+    ]
+  },
+  "cloudflare": {
+    "active_keys": [],
+    "invalid_keys": [
+      "CLOUDFLARE_TUNNEL_TOKEN",
+      "CLOUDFLARE_API_TOKEN_ADMIN",
+      "CLOUDFLARE_GOD_MODE_TOKEN",
+      "CLOUDFLARE_API_TOKEN_ALT_2",
+      "CLOUDFLARE_API_TOKEN_NEW"
+    ]
+  },
+  "openai": {
+    "active_keys": [],
+    "invalid_keys": [
+      "OPENAI_API_KEY"
+    ]
+  },
+  "discord": {
+    "active_keys": [],
+    "invalid_keys": [
+      "DISCORD_BOT_TOKEN_1",
+      "DISCORD_BOT_TOKEN_2"
+    ]
+  },
+  "_metadata": {
+    "last_check": "2026-04-08T07:26:04.441Z",
+    "total_active_services": 1
+  }
+}

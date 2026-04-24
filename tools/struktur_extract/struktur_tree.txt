@@ -1,0 +1,7 @@
+Auflistung der Ordnerpfade f�r Volume System
+Volumeseriennummer : A80C-D718
+C:\CARPUNCLE CLOUD\LANAAPP\TOOLS\STRUKTUR_EXTRACT
+    struktur_tree.txt
+    
+Es sind keine Unterordner vorhanden 
+

@@ -1,0 +1,46 @@
+{
+  "type": "model",
+  "owner": "liquid",
+  "name": "lfm2-24b-a2b",
+  "dependencies": [
+    {
+      "type": "model",
+      "purpose": "baseModel",
+      "modelKeys": [
+        "lmstudio-community/lfm2-24b-a2b-gguf",
+        "lmstudio-community/lfm2-24b-a2b-mlx-4bit",
+        "lmstudio-community/lfm2-24b-a2b-mlx-5bit",
+        "lmstudio-community/lfm2-24b-a2b-mlx-6bit",
+        "lmstudio-community/lfm2-24b-a2b-mlx-8bit"
+      ],
+      "sources": [
+        {
+          "type": "huggingface",
+          "user": "lmstudio-community",
+          "repo": "LFM2-24B-A2B-GGUF"
+        },
+        {
+          "type": "huggingface",
+          "user": "lmstudio-community",
+          "repo": "LFM2-24B-A2B-MLX-4bit"
+        },
+        {
+          "type": "huggingface",
+          "user": "lmstudio-community",
+          "repo": "LFM2-24B-A2B-MLX-5bit"
+        },
+        {
+          "type": "huggingface",
+          "user": "lmstudio-community",
+          "repo": "LFM2-24B-A2B-MLX-6bit"
+        },
+        {
+          "type": "huggingface",
+          "user": "lmstudio-community",
+          "repo": "LFM2-24B-A2B-MLX-8bit"
+        }
+      ]
+    }
+  ],
+  "revision": 1
+}

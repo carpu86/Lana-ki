@@ -1,0 +1,7 @@
+# Azure Directory Configuration
+Verzeichnisname: Carpuncle.ai
+Domäne: lana-ki.de
+Verzeichnis-ID: 9ab7fb48-3507-4326-8ebd-971d310c57fd
+
+# Das neue, gekaperte Master-Projekt
+MASTER_PROJECT = "lana-ki-cloud-core"

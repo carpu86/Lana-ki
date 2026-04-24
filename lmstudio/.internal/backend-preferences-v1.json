@@ -1,0 +1,7 @@
+[
+  {
+    "model_format": "gguf",
+    "name": "llama.cpp-win-x86_64-vulkan-avx2",
+    "version": "2.14.0"
+  }
+]

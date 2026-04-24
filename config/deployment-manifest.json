@@ -1,0 +1,88 @@
+{
+  "deployment": {
+    "timestamp": "2026-04-21T13:19:20Z",
+    "components": [
+      {
+        "status": "configured",
+        "name": "gemini-api-sync",
+        "port": null
+      },
+      {
+        "status": "configured",
+        "name": "cloudflare-domain-binding",
+        "port": null
+      },
+      {
+        "status": "active",
+        "name": "master-deployment",
+        "port": null
+      },
+      {
+        "status": "pending",
+        "name": "dashboard-api-controller",
+        "port": 8024
+      },
+      {
+        "status": "configured",
+        "name": "comfyui-service",
+        "port": 8188
+      },
+      {
+        "status": "configured",
+        "name": "backend-service",
+        "port": 8010
+      },
+      {
+        "status": "configured",
+        "name": "website-service",
+        "port": 4321
+      }
+    ],
+    "infrastructure": {
+      "nodes": [
+        {
+          "status": "online",
+          "id": "NODE-A",
+          "name": "Brain",
+          "ip": "100.110.207.22"
+        },
+        {
+          "status": "offline",
+          "id": "NODE-B",
+          "name": "Desktop",
+          "ip": "local"
+        },
+        {
+          "status": "on-demand",
+          "id": "NODE-C",
+          "name": "RunPod",
+          "ip": "cloud"
+        },
+        {
+          "status": "online",
+          "id": "NODE-D",
+          "name": "Laptop",
+          "ip": "100.67.27.13"
+        }
+      ],
+      "domains": [
+        {
+          "status": "active",
+          "name": "lana-ki.de",
+          "type": "primary"
+        },
+        {
+          "status": "active",
+          "name": "gateway.lana-ki.de",
+          "type": "gateway"
+        },
+        {
+          "status": "pending",
+          "name": "api.lana-ki.de",
+          "type": "api"
+        }
+      ]
+    },
+    "version": "1.0.0"
+  }
+}

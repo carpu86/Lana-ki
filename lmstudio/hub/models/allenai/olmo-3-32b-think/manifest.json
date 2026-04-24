@@ -1,0 +1,40 @@
+{
+  "type": "model",
+  "owner": "allenai",
+  "name": "olmo-3-32b-think",
+  "dependencies": [
+    {
+      "type": "model",
+      "purpose": "baseModel",
+      "modelKeys": [
+        "lmstudio-community/olmo-3-32b-think-gguf",
+        "lmstudio-community/olmo-3-32b-think-mlx-4bit",
+        "lmstudio-community/olmo-3-32b-think-mlx-6bit",
+        "lmstudio-community/olmo-3-32b-think-mlx-8bit"
+      ],
+      "sources": [
+        {
+          "type": "huggingface",
+          "user": "lmstudio-community",
+          "repo": "Olmo-3-32B-Think-GGUF"
+        },
+        {
+          "type": "huggingface",
+          "user": "lmstudio-community",
+          "repo": "Olmo-3-32B-Think-MLX-4bit"
+        },
+        {
+          "type": "huggingface",
+          "user": "lmstudio-community",
+          "repo": "Olmo-3-32B-Think-MLX-6bit"
+        },
+        {
+          "type": "huggingface",
+          "user": "lmstudio-community",
+          "repo": "Olmo-3-32B-Think-MLX-8bit"
+        }
+      ]
+    }
+  ],
+  "revision": 3
+}

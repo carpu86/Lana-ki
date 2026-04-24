@@ -1,0 +1,1 @@
+﻿{"version": "2.85.0", "cloudProfile": "latest", "helpIndex": {"groups": {"account": {"summary": "", "tags": ""}, "automation": {"summary": "Manage Automation Account.", "tags": ""}, "connectedmachine": {"summary": "Manage Azure Arc-Enabled Server.", "tags": ""}}, "commands": {}}}

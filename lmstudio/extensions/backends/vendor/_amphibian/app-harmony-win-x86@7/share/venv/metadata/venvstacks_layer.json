@@ -1,0 +1,13 @@
+{
+  "base_python": "..\\cpython3.11-win-x86@6\\python.exe",
+  "dynlib_dirs": [
+    "..\\cpython3.11-win-x86@6\\Library\\bin"
+  ],
+  "launch_module": "lms_harmony",
+  "py_version": "3.11.9",
+  "pylib_dirs": [
+    "..\\cpython3.11-win-x86@6\\Lib\\site-packages"
+  ],
+  "python": "Scripts\\python.exe",
+  "site_dir": "Lib\\site-packages"
+}

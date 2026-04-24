@@ -1,0 +1,5 @@
+{
+  "enableDirectInternetFromPc": false,
+  "enableLaptopAsGateway": true,
+  "enableFritzBoxBackup": true
+}

@@ -1,0 +1,101 @@
+{
+  "version": "4.0",
+  "dataModel": {
+    "name": "Lana-KI Analytics Dashboard",
+    "description": "Zentrale Analytics für die Lana-KI Infrastruktur",
+    "tables": [
+      {
+        "name": "LanaKI_Usage",
+        "columns": [
+          {"name": "Timestamp", "dataType": "DateTime"},
+          {"name": "UserID", "dataType": "String"},
+          {"name": "RequestType", "dataType": "String"},
+          {"name": "Agent", "dataType": "String"},
+          {"name": "ResponseTime", "dataType": "Double"},
+          {"name": "Success", "dataType": "Boolean"}
+        ]
+      },
+      {
+        "name": "GPU_Performance",
+        "columns": [
+          {"name": "Timestamp", "dataType": "DateTime"},
+          {"name": "NodeID", "dataType": "String"},
+          {"name": "GPUUsage", "dataType": "Double"},
+          {"name": "MemoryUsage", "dataType": "Double"},
+          {"name": "Temperature", "dataType": "Double"},
+          {"name": "PowerDraw", "dataType": "Double"}
+        ]
+      },
+      {
+        "name": "Agent_Health",
+        "columns": [
+          {"name": "Timestamp", "dataType": "DateTime"},
+          {"name": "AgentName", "dataType": "String"},
+          {"name": "Status", "dataType": "String"},
+          {"name": "ResponseTime", "dataType": "Double"},
+          {"name": "ErrorCount", "dataType": "Int64"}
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "Usage_to_Health",
+        "fromTable": "LanaKI_Usage",
+        "fromColumn": "Agent",
+        "toTable": "Agent_Health",
+        "toColumn": "AgentName"
+      }
+    ]
+  },
+  "dataSources": [
+    {
+      "name": "LanaKI_API",
+      "connectionString": "http://127.0.0.1:8024/analytics",
+      "type": "Web"
+    },
+    {
+      "name": "LanaKI_Logs",
+      "connectionString": "C:\\LanaRun\\logs",
+      "type": "Folder"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Overview",
+      "visuals": [
+        {
+          "type": "card",
+          "title": "Total Requests Today",
+          "measure": "COUNT(LanaKI_Usage[UserID])"
+        },
+        {
+          "type": "lineChart",
+          "title": "Response Times",
+          "xAxis": "LanaKI_Usage[Timestamp]",
+          "yAxis": "LanaKI_Usage[ResponseTime]"
+        },
+        {
+          "type": "pieChart",
+          "title": "Agent Usage Distribution",
+          "values": "LanaKI_Usage[Agent]"
+        }
+      ]
+    },
+    {
+      "name": "GPU Performance",
+      "visuals": [
+        {
+          "type": "gauge",
+          "title": "GPU Usage",
+          "measure": "AVERAGE(GPU_Performance[GPUUsage])"
+        },
+        {
+          "type": "lineChart",
+          "title": "GPU Temperature",
+          "xAxis": "GPU_Performance[Timestamp]",
+          "yAxis": "GPU_Performance[Temperature]"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "agents": [
+    {
+      "node": "laptop",
+      "purpose": "Master orchestration, memory, routing, job delegation",
+      "port": 8024,
+      "id": "lana-core",
+      "uses_resources_from": [
+        "windows_rtx",
+        "brain_cloud"
+      ]
+    },
+    {
+      "node": "laptop",
+      "purpose": "Microsoft 365, documents, mail, calendar, Teams, SharePoint",
+      "port": 8021,
+      "id": "buero-agent",
+      "depends_on": [
+        "lana-core"
+      ]
+    },
+    {
+      "node": "windows_rtx",
+      "purpose": "ComfyUI, image generation, upscale, GPU tasks",
+      "port": 8189,
+      "id": "gpu-worker-agent",
+      "depends_on": [
+        "lana-core"
+      ]
+    },
+    {
+      "node": "brain_cloud",
+      "purpose": "Overflow rendering, remote execution, burst workloads",
+      "port": 8030,
+      "id": "cloud-burst-agent",
+      "depends_on": [
+        "lana-core"
+      ]
+    },
+    {
+      "node": "shared",
+      "purpose": "Telegram bot, notifications, remote commands",
+      "port": 8023,
+      "id": "telegram-gateway-agent",
+      "depends_on": [
+        "lana-core"
+      ]
+    },
+    {
+      "node": "laptop",
+      "purpose": "Queue sync, status sync, result handoff, backups",
+      "port": 8031,
+      "id": "memory-sync-agent",
+      "depends_on": [
+        "lana-core"
+      ]
+    },
+    {
+      "node": "laptop",
+      "purpose": "Health checks, restart playbooks, recovery operations",
+      "port": 8032,
+      "id": "health-repair-agent",
+      "depends_on": [
+        "lana-core"
+      ]
+    }
+  ],
+  "updated": "2026-04-21 08:19:26",
+  "nodes": {
+    "laptop": {
+      "host": "192.168.178.103",
+      "agents": [
+        "lana-core",
+        "buero-agent",
+        "memory-sync-agent",
+        "health-repair-agent"
+      ],
+      "role": "stammhirn"
+    },
+    "telegram": {
+      "host": "shared",
+      "agents": [
+        "telegram-gateway-agent"
+      ],
+      "role": "gateway"
+    },
+    "windows_rtx": {
+      "host": "local-or-lan",
+      "agents": [
+        "gpu-worker-agent"
+      ],
+      "role": "gpu-worker"
+    },
+    "brain_cloud": {
+      "host": "brain-cloud",
+      "agents": [
+        "cloud-burst-agent"
+      ],
+      "role": "burst-worker"
+    }
+  },
+  "architecture": {
+    "routing_owner": "lana-core",
+    "local_first": true,
+    "env_policy": "Append only; backup before change",
+    "memory_owner": "lana-core",
+    "secret_policy": "No plaintext secrets in deployment files",
+    "principle": "Lana lives on laptop; all other agents are helpers/workers"
+  },
+  "version": "2.0.0"
+}

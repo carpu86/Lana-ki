@@ -1,0 +1,28 @@
+{
+  "type": "model",
+  "owner": "openai",
+  "name": "gpt-oss-20b",
+  "dependencies": [
+    {
+      "type": "model",
+      "purpose": "baseModel",
+      "modelKeys": [
+        "lmstudio-community/gpt-oss-20b-gguf",
+        "mlx-community/gpt-oss-20b-mxfp4-q8"
+      ],
+      "sources": [
+        {
+          "type": "huggingface",
+          "user": "lmstudio-community",
+          "repo": "gpt-oss-20b-GGUF"
+        },
+        {
+          "type": "huggingface",
+          "user": "mlx-community",
+          "repo": "gpt-oss-20b-MXFP4-Q8"
+        }
+      ]
+    }
+  ],
+  "revision": 7
+}

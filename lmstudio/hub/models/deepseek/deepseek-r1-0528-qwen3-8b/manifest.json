@@ -1,0 +1,34 @@
+{
+  "type": "model",
+  "owner": "deepseek",
+  "name": "deepseek-r1-0528-qwen3-8b",
+  "dependencies": [
+    {
+      "type": "model",
+      "purpose": "baseModel",
+      "modelKeys": [
+        "lmstudio-community/deepseek-r1-0528-qwen3-8b-gguf",
+        "lmstudio-community/deepSeek-r1-0528-qwen3-8B-mlx-4bit",
+        "lmstudio-community/deepSeek-r1-0528-qwen3-8B-mlx-8bit"
+      ],
+      "sources": [
+        {
+          "type": "huggingface",
+          "user": "lmstudio-community",
+          "repo": "DeepSeek-R1-0528-Qwen3-8B-GGUF"
+        },
+        {
+          "type": "huggingface",
+          "user": "lmstudio-community",
+          "repo": "DeepSeek-R1-0528-Qwen3-8B-MLX-4bit"
+        },
+        {
+          "type": "huggingface",
+          "user": "lmstudio-community",
+          "repo": "DeepSeek-R1-0528-Qwen3-8B-MLX-8bit"
+        }
+      ]
+    }
+  ],
+  "revision": 5
+}

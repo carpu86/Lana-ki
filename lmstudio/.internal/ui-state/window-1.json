@@ -1,0 +1,73 @@
+{
+  "projectIdentifier": "default-project-identifier",
+  "windowBounds": {
+    "x": 329,
+    "y": 35,
+    "width": 1221,
+    "height": 909
+  },
+  "lastExpandedWindowBounds": null,
+  "plugins": {
+    "selectedPluginIdentifier": null,
+    "pluginsConfigTopPanelSizePercent": 25,
+    "pluginsConfigBottomPanelSizePercent": 0,
+    "pluginConfigNeedsPulsate": false
+  },
+  "chat": {
+    "pluginsPopoverIsOpen": false,
+    "pluginsPopoverChatIdentifier": null,
+    "settingsPanelIsOpen": true,
+    "chatsPanelIsOpen": true,
+    "activeToolSidebarTab": "model",
+    "activeConversationIdentifier": null,
+    "expandedSidebarPlugins": [],
+    "pluginOrderPriorities": [],
+    "pluginFilterSearchTerm": "",
+    "pluginDropupFilterSearchTerm": "",
+    "chatSidebarWidth": null,
+    "settingsSidebarWidth": 345,
+    "terminalWidth": 600,
+    "openedTabsPerChatIdentifier": {},
+    "selectedTabPerChatIdentifier": {},
+    "additionalShortcutPluginIdentifiersPerChatIdentifier": {}
+  },
+  "missionControl": {
+    "resizableLeftPanelSizePercent": 40
+  },
+  "settings": {
+    "activeSettingsNavOption": "general"
+  },
+  "developer": {
+    "logsPanelSize": 30,
+    "detailsPanelSize": 25,
+    "panelGroupSize": 400,
+    "isDetailsPanelCollapsed": false
+  },
+  "modelLoading": {
+    "sortType": "recent",
+    "sortReversed": false
+  },
+  "modelLoaderShowAdvancedSettings": false,
+  "latestPath": "/models",
+  "lmLink": {
+    "selectedPeerDeviceIdentifier": null,
+    "selectedArtifactDownloadTargetDeviceIdentifier": null
+  },
+  "myModels": {
+    "columnWidthsPx": {}
+  },
+  "bionic": {
+    "leftSidebarIsCollapsed": false,
+    "leftSidebarWidth": null,
+    "rightPanelIsCollapsed": false,
+    "rightPanelWidth": null
+  },
+  "expandedKvConfigSections": [
+    "modelInfoCardSection",
+    "virtualModelSection",
+    "apiUsageSection",
+    "basicLoadParams",
+    "advancedLoadParams"
+  ],
+  "tabLayouts": {}
+}

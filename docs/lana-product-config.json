@@ -1,0 +1,42 @@
+{
+  "productVision": {
+    "core": "Fotorealistische AI-Companions mit eigenem Langzeitgedaechtnis pro Charakter",
+    "textIncluded": true,
+    "premiumFeatures": [
+      "image_generation",
+      "voice_messages",
+      "video_loops",
+      "exclusive_scenarios"
+    ]
+  },
+  "memoryModel": {
+    "namespacePattern": "{user_id}:{character_id}",
+    "perCharacterMemory": true,
+    "sharedGlobalMemory": false
+  },
+  "rendering": {
+    "comfyui": "http://127.0.0.1:8188",
+    "lmstudio": "http://127.0.0.1:1234",
+    "vramProfile": {
+      "gpu": "RTX 4060",
+      "vramGb": 8,
+      "lowVram": true,
+      "maxResolution": "512x512",
+      "tiledVaeDecode": true,
+      "maxBatchSize": 1
+    }
+  },
+  "nodes": {
+    "windows_master": {
+      "path": "C:\\Carpuncle Cloud\\LanaApp"
+    },
+    "debian_laptop": {
+      "ip": "100.67.27.13",
+      "path": "/home/carpu/LanaApp/sync/",
+      "port": 8024
+    },
+    "google_brain": {
+      "ip": "100.110.207.22"
+    }
+  }
+}

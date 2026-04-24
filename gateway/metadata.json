@@ -1,0 +1,5 @@
+{
+  "name": "Lana-KI Unified Gateway",
+  "description": "A comprehensive AI gateway consolidating Google Cloud, Azure, GitHub, and multiple AI models (Gemini, OpenAI, Groq) into a unified dashboard.",
+  "requestFramePermissions": ["microphone", "camera"]
+}

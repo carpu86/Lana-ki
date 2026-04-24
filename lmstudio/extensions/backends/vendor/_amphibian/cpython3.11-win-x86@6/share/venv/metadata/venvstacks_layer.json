@@ -1,0 +1,8 @@
+{
+  "base_python": "python.exe",
+  "dynlib_dirs": [],
+  "py_version": "3.11.9",
+  "pylib_dirs": [],
+  "python": "python.exe",
+  "site_dir": "Lib\\site-packages"
+}

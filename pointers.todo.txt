@@ -1,0 +1,2 @@
+KEYVAULT TODO (nur Namen, keine Werte):
+- KGQ  ->  kgq

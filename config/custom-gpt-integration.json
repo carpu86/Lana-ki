@@ -1,0 +1,31 @@
+{
+  "capabilities": [
+    "Multi-Agent AI Systems",
+    "PowerShell Automation",
+    "Cloud Infrastructure",
+    "AI Companion Platforms",
+    "ComfyUI Integration",
+    "Telegram Bot Development",
+    "1Password Security",
+    "Monetization Strategies"
+  ],
+  "name": "Lana-KI Master Commander",
+  "version": "1.0.0",
+  "created": "2026-04-21 07:45:02",
+  "local_endpoints": {
+    "master_orchestrator": "http://127.0.0.1:8024",
+    "gemini_enterprise": "http://127.0.0.1:8020",
+    "gemini_gems": "http://127.0.0.1:8022",
+    "backend": "http://127.0.0.1:8010",
+    "comfyui": "http://127.0.0.1:8188",
+    "telegram_bot": "http://127.0.0.1:8023",
+    "copilot_studio": "http://127.0.0.1:8021",
+    "website": "http://127.0.0.1:4321"
+  },
+  "project_structure": {
+    "brain_cloud": "100.110.207.22",
+    "laptop_node": "100.67.27.13",
+    "runpod_cloud": "on-demand",
+    "windows_desktop": "local"
+  }
+}

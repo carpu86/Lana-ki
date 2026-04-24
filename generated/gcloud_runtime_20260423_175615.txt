@@ -1,0 +1,43 @@
+checked_at: 2026-04-23T17:56:39
+gcloud_path: C:\Program Files (x86)\Google\Cloud SDK\google-cloud-sdk\bin\gcloud.ps1
+
+=== VERSION ===
+Google Cloud SDK 565.0.0
+alpha 2026.04.10
+beta 2026.04.10
+bq 2.1.31
+core 2026.04.10
+gcloud-crc32c 1.0.0
+gsutil 5.36
+
+=== AUTH ===
+Credentialed Accounts
+ACTIVE  ACCOUNT
+*       carpu86de@gmail.com
+        carpu@lana-ki.de
+
+To set the active account, run:
+    $ gcloud config set account `ACCOUNT`
+
+=== CONFIG ===
+[accessibility]
+screen_reader = False
+[core]
+account = carpu86de@gmail.com
+disable_usage_reporting = False
+project = lana-ki-cloud-core
+
+Your active configuration is: [default]
+[environment: untagged] Read more to tag: g.co/cloud/project-env-tag.
+
+=== PROJECTS ===
+PROJECT_ID                      NAME                      PROJECT_NUMBER  ENVIRONMENT
+cs-host-d5bb447f7b1e44088c8147  Cloud Setup Host Project  395247151407
+google-mpf-mq7v1bg82uyx         Proof of Concept-mp       768464006746
+lana-ki-cloud-core              Carpuncle Cloud Lana-ki   516487041696
+lana-ki-unified-20260411        Lana-KI Unified Platform  776513340613
+watchful-nature-8kw4x                                     421156224173
+
+=== VMS ===
+NAME               ZONE            MACHINE_TYPE   PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP    STATUS
+lana-master-brain  europe-west3-c  e2-standard-2               10.156.0.2   34.107.98.174  RUNNING

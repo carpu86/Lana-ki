@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "settings": {
+    "dataPath": "C:\Carpuncle Cloud\LanaApp\analytics\powerbi\data",
+    "cachePath": "C:\Carpuncle Cloud\LanaApp\analytics\powerbi\cache",
+    "templatesPath": "C:\Carpuncle Cloud\LanaApp\analytics\powerbi\templates",
+    "workspacePath": "C:\Carpuncle Cloud\LanaApp\analytics\powerbi\workspace",
+    "autoSave": true,
+    "autoRefresh": 300,
+    "dataSources": {
+      "lanaAPI": {
+        "url": "http://127.0.0.1:8024",
+        "refreshInterval": 60,
+        "authentication": "none"
+      },
+      "azureAPI": {
+        "url": "https://management.azure.com",
+        "refreshInterval": 300,
+        "authentication": "oauth"
+      },
+      "geminiAPI": {
+        "url": "http://127.0.0.1:8020",
+        "refreshInterval": 120,
+        "authentication": "apikey"
+      }
+    },
+    "visualizations": {
+      "theme": "dark",
+      "colorScheme": "lanaKI",
+      "defaultChartType": "line"
+    }
+  }
+}

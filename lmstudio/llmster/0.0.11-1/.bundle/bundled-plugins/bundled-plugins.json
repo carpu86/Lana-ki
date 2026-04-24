@@ -1,0 +1,16 @@
+{
+  "bundledPlugins": [
+    {
+      "owner": "lmstudio",
+      "name": "rag-v1",
+      "revision": 7,
+      "tarballFileName": "bundled-plugin-rag-v1.tar.gz"
+    },
+    {
+      "owner": "lmstudio",
+      "name": "js-code-sandbox",
+      "revision": 7,
+      "tarballFileName": "bundled-plugin-js-code-sandbox.tar.gz"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "type": "model",
+  "owner": "qwen",
+  "name": "qwen3.6-27b",
+  "dependencies": [
+    {
+      "type": "model",
+      "purpose": "baseModel",
+      "modelKeys": [
+        "lmstudio-community/qwen3.6-27b-gguf"
+      ],
+      "sources": [
+        {
+          "type": "huggingface",
+          "user": "lmstudio-community",
+          "repo": "Qwen3.6-27B-GGUF"
+        }
+      ]
+    }
+  ],
+  "revision": 1
+}

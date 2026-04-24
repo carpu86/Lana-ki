@@ -1,0 +1,22 @@
+{
+  "type": "model",
+  "owner": "qwen",
+  "name": "qwen3.5-9b",
+  "dependencies": [
+    {
+      "type": "model",
+      "purpose": "baseModel",
+      "modelKeys": [
+        "lmstudio-community/qwen3.5-9b-gguf"
+      ],
+      "sources": [
+        {
+          "type": "huggingface",
+          "user": "lmstudio-community",
+          "repo": "Qwen3.5-9B-GGUF"
+        }
+      ]
+    }
+  ],
+  "revision": 2
+}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lana-KI • Dashboard • lana-ki.de</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', system_ui, sans-serif; }
+        .dark { background: #0f0f0f; color: #fff; }
+        .section { background: #1a1a1a; border: 1px solid #333; }
+        .nav-active { border-bottom: 3px solid #ef4444; color: #ef4444; }
+    </style>
+</head>
+<body class="dark bg-[#0f0f0f] text-white">
+    <!-- Navbar -->
+    <nav class="bg-black border-b border-red-900 px-8 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-x-3">
+            <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center">
+                <i class="fas fa-play text-white text-2xl"></i>
+            </div>
+            <div>
+                <span class="text-3xl font-bold tracking-tighter">Lana-KI</span>
+                <span class="text-red-500 text-xl">.de</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-x-4 text-sm">
+            <div class="px-4 py-1.5 bg-zinc-900 rounded-full flex items-center gap-x-2">
+                <i class="fas fa-globe text-emerald-400"></i>
+                <span>lana-ki.de</span>
+            </div>
+            <div class="px-3 py-1 bg-emerald-900 text-emerald-400 rounded-full text-xs font-bold">18+ VERIFIZIERT</div>
+        </div>
+    </nav>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="w-72 bg-zinc-950 border-r border-zinc-800 p-6 min-h-screen">
+            <div class="mb-8">
+                <div class="flex items-center gap-x-3 mb-2">
+                    <img src="https://picsum.photos/id/64/48/48" class="w-12 h-12 rounded-full border-2 border-red-500" alt="Dein Gesicht">
+                    <div>
+                        <div class="font-bold">Der Mann • carpu86</div>
+                        <div class="text-xs text-zinc-500">Immer du</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-1 text-sm">
+                <div onclick="showTab('girls')" class="flex items-center gap-x-3 px-4 py-3 hover:bg-zinc-900 rounded-xl cursor-pointer nav-active" id="nav-girls">
+                    <i class="fas fa-users w-5"></i> <span>Meine Mädchen (18–20)</span>
+                </div>
+                <div onclick="showTab('scenario')" class="flex items-center gap-x-3 px-4 py-3 hover:bg-zinc-900 rounded-xl cursor-pointer" id="nav-scenario">
+                    <i class="fas fa-magic w-5"></i> <span>Szenario Studio</span>
+                </div>
+                <div onclick="showTab('prompts')" class="flex items-center gap-x-3 px-4 py-3 hover:bg-zinc-900 rounded-xl cursor-pointer" id="nav-prompts">
+                    <i class="fas fa-terminal w-5"></i> <span>Prompt Vault</span>
+                </div>
+                <div onclick="showTab('faphouse')" class="flex items-center gap-x-3 px-4 py-3 hover:bg-zinc-900 rounded-xl cursor-pointer" id="nav-faphouse">
+                    <i class="fas fa-upload w-5"></i> <span>FapHouse Exporter</span>
+                </div>
+                <div onclick="showTab('colab')" class="flex items-center gap-x-3 px-4 py-3 hover:bg-zinc-900 rounded-xl cursor-pointer" id="nav-colab">
+                    <i class="fas fa-robot w-5"></i> <span>Colab Pro Worker</span>
+                </div>
+            </div>
+
+            <div class="mt-auto pt-8 border-t border-zinc-800 text-xs text-zinc-500">
+                <div>Version 2.0 • lana-ki.de</div>
+                <div class="text-emerald-400">RTX + Colab Pro verbunden</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8">
+            
+            <!-- GIRLS TAB -->
+            <div id="tab-girls">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-3xl font-bold">Meine Mädchen <span class="text-red-500">(18–20)</span></h2>
+                    <button onclick="addNewGirl()" class="px-5 py-2.5 bg-red-600 hover:bg-red-700 rounded-2xl flex items-center gap-x-2 text-sm font-semibold">
+                        <i class="fas fa-plus"></i> Neues Mädchen
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="girls-grid"></div>
+            </div>
+
+            <!-- SCENARIO TAB -->
+            <div id="tab-scenario" class="hidden">
+                <h2 class="text-3xl font-bold mb-6">Szenario Studio • lana-ki.de</h2>
+                <div class="grid grid-cols-12 gap-6">
+                    <div class="col-span-12 lg:col-span-5 section rounded-3xl p-6">
+                        <div class="mb-5">
+                            <label class="block text-sm font-medium mb-2">Mädchen auswählen</label>
+                            <select id="girl-select" class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-4 py-3" onchange="updateScenarioPreview()"></select>
+                        </div>
+                        <div class="mb-5">
+                            <label class="block text-sm font-medium mb-2">Szenario-Beschreibung</label>
+                            <textarea id="scenario-text" rows="6" class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-4 py-3 text-sm">19-jährige Mia in glänzenden schwarzen Nylons im SM-Zimmer, harte anale Creampie aus POV, Piss-Spiele, Demütigung, Peitsche weil sie um vaginal bettelt...</textarea>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-5">
+                            <div>
+                                <label class="block text-xs mb-1">Dauer</label>
+                                <select id="duration" class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-3 py-2 text-sm">
+                                    <option>10 Minuten</option>
+                                    <option selected>12 Minuten</option>
+                                    <option>15 Minuten</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs mb-1">Kamera</label>
+                                <select id="camera" class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-3 py-2 text-sm">
+                                    <option>POV (deine Sicht)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button onclick="generateAllPrompts()" class="w-full py-4 bg-gradient-to-r from-red-600 to-orange-600 rounded-3xl font-bold">ALLE PROMPTS GENERIEREN</button>
+                    </div>
+                    <div class="col-span-12 lg:col-span-7 section rounded-3xl p-6">
+                        <div id="scenario-preview" class="bg-zinc-950 rounded-2xl p-5 min-h-[220px]"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROMPTS TAB -->
+            <div id="tab-prompts" class="hidden">
+                <h2 class="text-3xl font-bold mb-6">Prompt Vault</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="section rounded-3xl p-6">
+                        <div class="flex justify-between mb-3">
+                            <div class="font-semibold">Bild-Prompt</div>
+                            <button onclick="copyToClipboard('image-prompt')" class="text-xs px-3 py-1 bg-zinc-800 rounded-lg">Kopieren</button>
+                        </div>
+                        <div id="image-prompt" class="prompt-box bg-black p-4 rounded-2xl text-xs h-48 overflow-auto"></div>
+                    </div>
+                    <div class="section rounded-3xl p-6">
+                        <div class="flex justify-between mb-3">
+                            <div class="font-semibold">Video-Prompt (Colab)</div>
+                            <button onclick="copyToClipboard('video-prompt')" class="text-xs px-3 py-1 bg-zinc-800 rounded-lg">Kopieren</button>
+                        </div>
+                        <div id="video-prompt" class="prompt-box bg-black p-4 rounded-2xl text-xs h-48 overflow-auto"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAPHOUSE TAB -->
+            <div id="tab-faphouse" class="hidden">
+                <h2 class="text-3xl font-bold mb-6">FapHouse Exporter • lana-ki.de</h2>
+                <div class="section rounded-3xl p-8 max-w-2xl">
+                    <input id="faphouse-title" type="text" class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-5 py-3 mb-4" value="19-jährige Mia in Nylons – harte anale Creampie + Piss + Peitsche (POV)">
+                    <textarea id="faphouse-desc" rows="4" class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-5 py-3 text-sm mb-4">18+ • 19-jährige Mia in glänzenden Nylons wird von mir im SM-Zimmer hart anal gefickt...</textarea>
+                    <button onclick="exportToFapHouse()" class="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl font-bold">FÜR FAPHOUSE EXPORTIEREN</button>
+                </div>
+            </div>
+
+            <!-- COLAB PRO WORKER TAB -->
+            <div id="tab-colab" class="hidden">
+                <h2 class="text-3xl font-bold mb-6">Colab Pro Worker • lana-ki.de</h2>
+                <div class="section rounded-3xl p-8 max-w-2xl">
+                    <div class="mb-6">
+                        <label class="block text-sm mb-2">Colab ngrok URL (aus Notebook kopieren)</label>
+                        <input id="colab-url" type="text" placeholder="https://xxxx.ngrok-free.app" class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-5 py-3">
+                    </div>
+                    <div class="flex gap-4">
+                        <button onclick="sendToColab()" class="flex-1 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl font-bold flex items-center justify-center gap-x-3">
+                            <i class="fas fa-rocket"></i> <span>AN COLAB PRO SENDEN</span>
+                        </button>
+                        <button onclick="sendToColab(true)" class="flex-1 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl font-bold flex items-center justify-center gap-x-3">
+                            <i class="fas fa-upload"></i> <span>+ Direkt zu FapHouse</span>
+                        </button>
+                    </div>
+                    <div id="colab-status" class="mt-4 text-sm text-emerald-400 hidden"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Tailwind + alle Funktionen (Mädchen, Szenario, Prompts, FapHouse, Colab)
+        function initTailwind() { /* ... */ }
+        
+        let girls = [ /* deine 4 Mädchen wie vorher */ ];
+        
+        function renderGirls() { /* ... */ }
+        function showTab(tab) { /* ... */ }
+        function updateScenarioPreview() { /* ... */ }
+        function generateAllPrompts() { /* ... */ }
+        function sendToColab(uploadFaphouse = false) {
+            const url = document.getElementById('colab-url').value.trim();
+            if (!url) { alert("ngrok-URL fehlt!"); return; }
+            
+            const payload = {
+                prompt: document.getElementById('scenario-text').value,
+                duration: parseInt(document.getElementById('duration').value),
+                girl_name: document.getElementById('girl-select').selectedOptions[0].text,
+                upload_to_faphouse: uploadFaphouse
+            };
+            
+            fetch(url + "/generate", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(payload)
+            })
+            .then(r => r.json())
+            .then(data => {
+                const status = document.getElementById('colab-status');
+                status.classList.remove('hidden');
+                status.innerHTML = `✅ ${data.message} | Video: ${data.video_path}`;
+            });
+        }
+        
+        // Alle anderen Funktionen (addNewGirl, editGirl, copyToClipboard, exportToFapHouse etc.) wie in der vorherigen Version
+        
+        window.onload = function() {
+            initTailwind();
+            renderGirls();
+            showTab('girls');
+            // ngrok-URL vorausfüllen falls gewünscht
+        }
+    </script>
+</body>
+</html>

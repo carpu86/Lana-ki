@@ -1,0 +1,17 @@
+{
+  "globalPredictionConfig": {
+    "fields": []
+  },
+  "selectedConversation": null,
+  "newChatConversationIdentifier": null,
+  "selectedConversationHistory": [],
+  "selectedConversationHistoryIndex": -1,
+  "selectedPredictionProcessorIdentifier": "lmstudio:simplePredictionProcessor",
+  "viewMode": "plaintext",
+  "fontSize": "medium",
+  "fontWeight": "normal",
+  "conversationFontSizeIndex": 6,
+  "messageStyle": "bubble",
+  "selectedDirectory": null,
+  "expandedDirectories": []
+}

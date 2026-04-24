@@ -1,0 +1,13 @@
+cleanup-archive/
+_local_only_not_indexed/
+node_modules/
+backup/
+temp/
+logs/
+results/
+*.zip
+*.bak
+*.log
+.env.backup*
+.env.bak*
+.BIN/

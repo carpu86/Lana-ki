@@ -1,0 +1,6 @@
+{
+  "appName": "LanaApp",
+  "mode": "local-master",
+  "networkPolicy": "pc-never-direct-to-internet",
+  "controlNode": "laptop"
+}
