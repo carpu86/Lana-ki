@@ -1,0 +1,69 @@
+# =========================================================
+# LANA-KI — Global Git Ignore
+# =========================================================
+
+# --- Secrets / Environment ---
+.env
+.env.*
+config/env/
+/secrets/
+verified_keys.env
+gepruefte_keys.env
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+venv/
+
+# --- Node / Frontend ---
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+
+# --- Build / Dist ---
+dist/
+build/
+.out/
+
+# --- Logs ---
+logs/
+*.log
+
+# --- Databases ---
+*.sqlite
+*.sqlite3
+*.db
+
+# --- Backups ---
+*.bak
+*.bak.*
+*~ 
+
+# --- ComfyUI ---
+ComfyUI/output/
+ComfyUI/models/
+ComfyUI/temp/
+
+# --- Sync / Queues ---
+sync/output/
+sync/queue/
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- IDE ---
+.vscode/
+.idea/
+
+# --- Security ---
+*.pem
+*.key
+*.crt
+ssh_keys_dump.txt
+``
