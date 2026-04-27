@@ -1,0 +1,2 @@
+Set shell = CreateObject("WScript.Shell")
+shell.Run "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Carpuncle Cloud\LanaApp\lana-ki\scripts\lana-headless-start.ps1""", 0, False
