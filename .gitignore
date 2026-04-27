@@ -67,3 +67,26 @@ Thumbs.db
 *.crt
 ssh_keys_dump.txt
 ``
+
+# === LANA-KI SECRET SAFETY ===
+.env
+.env.*
+*.env
+**/.env
+**/.env.*
+extracted_keys_backup.txt
+*_keys_backup.txt
+*secret*
+*secrets*
+*.key
+*.pem
+*.p12
+*.pfx
+*.sqlite
+*.db
+logs/
+node_modules/
+.venv/
+dist/
+frontend/dist/
+_LOCAL_SECRET_BACKUP_DO_NOT_COMMIT/
