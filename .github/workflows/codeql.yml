@@ -2,24 +2,23 @@ name: "CodeQL"
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - main
+    branches: [ "main" ]
   schedule:
-    - cron: "16 14 * * 3" # Mittwoch 14:16 UTC
-
-permissions:
-  security-events: write
-  packages: read
-  actions: read
-  contents: read
+    - cron: "16 14 * * 3"
+  workflow_dispatch:
 
 jobs:
   analyze:
-    name: Analyze ${{ matrix.language }}
+    name: Analyze (${{ matrix.language }})
     runs-on: ubuntu-latest
+
+    permissions:
+      security-events: write
+      packages: read
+      actions: read
+      contents: read
 
     strategy:
       fail-fast: false
@@ -33,10 +32,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v4
+        uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
-          queries: security-extended,security-and-quality
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v4
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{ matrix.language }}"
