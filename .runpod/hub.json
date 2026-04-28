@@ -1,0 +1,12 @@
+{
+  "name": "Lana-KI Node C",
+  "description": "Lana Heavy Execution Worker (RunPod Serverless)",
+  "docker_image": "carpu86/lana-ki-worker:latest",
+  "env": [
+    {
+      "name": "LANA_WORKER_MODE",
+      "description": "Definiert den Modus (z.B. ltx-video, sd-image, text)",
+      "required": false
+    }
+  ]
+}

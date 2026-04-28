@@ -1,3 +1,4 @@
+[![RunPod Ready](https://img.shields.io/badge/RunPod-Ready-blue.svg)](https://runpod.io)
 # 🌌 LANA‑KI
 
 **Hybride, lokale & cloud‑erweiterbare Multi‑Agent‑KI‑Plattform**  
@@ -113,3 +114,4 @@ Privates/kommerzielles Projekt – Nutzungsrechte vorbehalten.
 **Status:** aktiv  
 **Owner / Architect:** Thomas Heckhoff  
 **Project:** Lana‑KI
+

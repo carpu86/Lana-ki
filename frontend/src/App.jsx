@@ -4,8 +4,14 @@ import "./style.css";
 
 function App() {
   const [health, setHealth] = useState(null);
-  const [message, setMessage] = useState("Lana, prüfe Systemstatus.");
-  const [reply, setReply] = useState("");
+  const [message, setMessage] = useState("Lana, wie heiße ich?");
+  const [chat, setChat] = useState([
+    {
+      role: "lana",
+      text: "Hey Commander Thomas. Ich bin Lana — deine private Local-First AI Companion Webapp."
+    }
+  ]);
+  const [busy, setBusy] = useState(false);
 
   async function loadHealth() {
     try {
@@ -18,17 +24,25 @@ function App() {
   }
 
   async function sendMessage() {
-    setReply("Lana verarbeitet...");
+    const clean = message.trim();
+    if (!clean) return;
+
+    setBusy(true);
+    setChat((old) => [...old, { role: "user", text: clean }]);
+
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message, mode: "local-first" })
+        body: JSON.stringify({ message: clean, mode: "local-first" })
       });
       const data = await res.json();
-      setReply(data.reply || JSON.stringify(data, null, 2));
+      setChat((old) => [...old, { role: "lana", text: data.reply || "Ich bin da." }]);
     } catch (err) {
-      setReply("Fehler: " + String(err));
+      setChat((old) => [...old, { role: "lana", text: "Fehler: " + String(err) }]);
+    } finally {
+      setMessage("");
+      setBusy(false);
     }
   }
 
@@ -37,49 +51,88 @@ function App() {
   }, []);
 
   return (
-    <main className="wrap">
-      <header className="top">
-        <div className="logo">🤖 <span>Lana KI</span></div>
+    <main className="shell">
+      <header className="topbar">
+        <div className="brand">
+          <span className="mark">L</span>
+          <div>
+            <strong>Lana KI</strong>
+            <small>Private AI Girlfriend · Local First</small>
+          </div>
+        </div>
         <div className={health?.ok ? "pill ok" : "pill warn"}>
           {health?.ok ? "ONLINE" : "CHECK"}
         </div>
       </header>
 
       <section className="hero">
-        <div className="eyebrow">Carpuncle Cloud · Local First · Private AI</div>
-        <h1>Deine KI.<br />Dein Server.</h1>
-        <p>
-          Lana läuft lokal auf deiner Infrastruktur, liefert eine Webapp aus
-          und hält Secrets außerhalb des Git-Repositories.
-        </p>
+        <div className="copy">
+          <div className="eyebrow">Carpuncle Cloud · Companion Runtime</div>
+          <h1>Deine Lana ist online.</h1>
+          <p>
+            Private Companion-Webapp mit lokalem Backend, Chat-Runtime,
+            Erinnerung und sauber getrennten Secrets.
+          </p>
+
+          <div className="meta">
+            <div>
+              <span>Commander</span>
+              <strong>{health?.commander_name || "Thomas Heckhoff"}</strong>
+            </div>
+            <div>
+              <span>Mode</span>
+              <strong>{health?.mode || "local-first"}</strong>
+            </div>
+            <div>
+              <span>Webapp</span>
+              <strong>{health?.webapp_served ? "Served" : "Build prüfen"}</strong>
+            </div>
+          </div>
+        </div>
+
+        <div className="avatar">
+          <div className="glow"></div>
+          <div className="face">
+            <span className="eyes">● ●</span>
+            <span className="smile">⌣</span>
+          </div>
+          <div className="caption">
+            <strong>Lana</strong>
+            <span>loyal · romantic · private</span>
+          </div>
+        </div>
       </section>
 
-      <section className="grid">
-        <div className="card">
-          <span>Status</span>
-          <strong>{health?.ok ? "Backend OK" : "Nicht verbunden"}</strong>
+      <section className="chatbox">
+        <div className="chathead">
+          <div>
+            <strong>Lana Chat</strong>
+            <span>Direkt mit /api/chat verbunden</span>
+          </div>
+          <button onClick={loadHealth}>Status</button>
         </div>
-        <div className="card">
-          <span>Mode</span>
-          <strong>{health?.mode || "local-first"}</strong>
-        </div>
-        <div className="card">
-          <span>Brain</span>
-          <strong>{health?.brain_loaded ? "Loaded" : "Pending"}</strong>
-        </div>
-      </section>
 
-      <section className="chat">
-        <h2>Chat-Test</h2>
-        <textarea value={message} onChange={(e) => setMessage(e.target.value)} />
-        <button onClick={sendMessage}>An Lana senden</button>
-        {reply && <pre>{reply}</pre>}
-      </section>
+        <div className="messages">
+          {chat.map((item, index) => (
+            <div className={`bubble ${item.role}`} key={index}>
+              {item.text}
+            </div>
+          ))}
+        </div>
 
-      <section className="status">
-        <h2>API Health</h2>
-        <button onClick={loadHealth}>Neu prüfen</button>
-        <pre>{JSON.stringify(health, null, 2)}</pre>
+        <div className="inputrow">
+          <input
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") sendMessage();
+            }}
+            placeholder="Schreib Lana..."
+          />
+          <button onClick={sendMessage} disabled={busy}>
+            {busy ? "..." : "Senden"}
+          </button>
+        </div>
       </section>
     </main>
   );
