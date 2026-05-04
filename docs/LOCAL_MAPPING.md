@@ -12,6 +12,7 @@ Diese Datei beschreibt die lokale Arbeitsstruktur auf dem Windows-Node.
 |------|-----|
 | AppRoot | C:\Carpuncle Cloud\LanaApp |
 | Git-Repo | C:\Carpuncle Cloud\LanaApp\lana-ki |
+| LanaVault (Primary Memory) | C:\Carpuncle Cloud\LanaVault |
 | Logs | C:\Carpuncle Cloud\LanaApp\logs |
 | Rescue Backend | C:\Carpuncle Cloud\LanaApp\rescue_backend |
 | Python venv | C:\Carpuncle Cloud\LanaApp\venv |
@@ -38,6 +39,16 @@ Diese Datei beschreibt die lokale Arbeitsstruktur auf dem Windows-Node.
 | Tunnel Target | d051bcc0-f66c-41ce-bccd-c6cf3e01ab59.cfargotunnel.com |
 | Windows Origin | http://192.168.178.100:8030 |
 | Laptop Node | carpu@192.168.178.103 |
+
+---
+
+## 🧩 Rollen-Klarstellung (Survival-Topologie)
+
+- **Node B (Windows RTX):** primäre lokale Lana-Ausführung, GPU/ComfyUI, Memory‑Vault
+- **Node D (Laptop):** Monitor/Relay/Command-Center, kein primärer Memory‑Knoten
+- **Cloud Server:** Public Runtime/Fallback, nicht primärer Secret-Träger
+- **NAS/Box/Drive:** verschlüsselte Backups + Restore-Pakete
+- **Pixel Pro 8:** Emergency Commander Interface
 
 ---
 
