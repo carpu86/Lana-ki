@@ -22,25 +22,40 @@
 ---
 
 ## 🧱 System‑Architektur (Kurzfassung)
+
+```
 Internet
 │
 ▼
-Cloudflare DNS / Tunnel
-│
+Cloudflare DNS / Pages / Tunnel
+│  Domain: lana-ki.de
 ▼
-┌──────────────────────────────┐
-│ Debian / Laptop (NODE D)     │
-│ 24/7 Hub + Tunnel + Watchdog │
-└──────────────────────────────┘
-│
+┌──────────────────────────────────────┐
+│ Debian Laptop – NODE D               │
+│ Stammhirn / Hub / Master-Orchestrator│
+│ Tailscale: 100.67.27.13              │
+│ FastAPI Orchestrator: :8024          │
+│ LLaVA Vision: :8080                  │
+└──────────────────────────────────────┘
+│  Tailscale Mesh (100.x.x.x)
 ▼
-┌──────────────────────────────┐
-│ Windows RTX Workstation      │
-│ FastAPI + ComfyUI + GPU      │
-└──────────────────────────────┘
-│
-├─ optional Cloud Brain (GCP)
-└─ optional GPU Burst (RunPod)
+┌──────────────────────────────────────┐
+│ Windows PC – NODE B                  │
+│ RTX-Muskel / Master-Worker           │
+│ Lokal: 127.0.0.1                     │
+│ LM Studio: :1234                     │
+│ ComfyUI: :8188                       │
+│ FastAPI Backend: :8030               │
+│ Pfad: C:\Carpuncle Cloud\LanaApp     │
+└──────────────────────────────────────┘
+│  Tailscale Mesh (100.x.x.x)
+▼
+┌──────────────────────────────────────┐
+│ Google Cloud VM – NODE A             │
+│ Brain / Worker                       │
+│ Tailscale: 100.110.207.22            │
+└──────────────────────────────────────┘
+```
 
 ---
 
@@ -57,14 +72,41 @@ Cloudflare DNS / Tunnel
 
 ---
 
-## 🖥️ Nodes
+## 🖥️ Nodes & IPs
 
-| Node | Rolle | Status |
-|----|----|----|
-| NODE B | Windows RTX Desktop (GPU Worker) | ✅ aktiv |
-| NODE D | Debian Laptop (Tunnel / Hub) | ✅ aktiv |
-| NODE A | Google Cloud Brain | ⏸ optional |
-| NODE C | RunPod GPU Burst | ⏳ geplant |
+| Node | Bezeichnung | Rolle | Adresse / IP | Wichtige Ports |
+|------|-------------|-------|-------------|----------------|
+| NODE B | Windows PC | Master / RTX‑Muskel | Lokal: `127.0.0.1` | LM Studio `:1234`, ComfyUI `:8188`, FastAPI `:8030` |
+| NODE D | Debian Laptop | Stammhirn / Hub | Tailscale: `100.67.27.13` | Orchestrator `:8024`, LLaVA `:8080` |
+| NODE A | Google Cloud VM | Brain / Worker | Tailscale: `100.110.207.22` | – |
+
+> **Netzwerk‑Hinweis:** Alle Knoten kommunizieren **ausschließlich über das Tailscale‑Mesh** (`100.x.x.x`).  
+> Keine öffentlichen Internet‑IPs verwenden. Lokale LAN‑IPs (`192.168.x.x`) sind nur für SMB‑Freigaben zulässig.
+
+---
+
+## 🔌 Dienste & API‑Endpunkte
+
+| Dienst | URL | Node | Beschreibung |
+|--------|-----|------|-------------|
+| FastAPI Backend | `http://127.0.0.1:8030` | NODE B | Haupt‑Backend |
+| LM Studio | `http://127.0.0.1:1234` | NODE B | Lokale LLM‑Inferenz (RTX) |
+| ComfyUI | `http://127.0.0.1:8188` | NODE B | Bildgenerierung (GPU) |
+| Master‑Orchestrator | `http://100.67.27.13:8024` | NODE D | FastAPI Multi‑Agent‑Routing |
+| LLaVA Vision | `http://100.67.27.13:8080` | NODE D | Bild‑Verstehen / Vision |
+| Frontend | `https://lana-ki.de` | Cloudflare Pages | Astro‑Webapp |
+
+---
+
+## 📂 Pfad‑Konventionen
+
+| Regelung | Detail |
+|----------|--------|
+| ✅ Primärer Projektpfad | `C:\Carpuncle Cloud\LanaApp` |
+| ✅ Lokale SMB‑Freigabe | `\\localhost\Lana KI` bzw. `\\127.0.0.1\Lana KI` |
+| ✅ Netzwerk‑SMB‑Freigabe | `\\192.168.178.100\Lana KI` |
+| ❌ `T:\` verboten | Gemappte Laufwerke **niemals** in Code oder Docs hardcoden |
+| ❌ Externe IPs verboten | Keine öffentlichen Internet‑IPs; LAN (`192.168.x.x`) nur für SMB‑Freigaben |
 
 ---
 
