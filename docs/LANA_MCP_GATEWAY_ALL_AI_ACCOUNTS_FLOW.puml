@@ -1,0 +1,86 @@
+@startuml
+title Lana-KI MCP / Gateway / AI-Konten Flow
+
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Arial
+
+actor "User / ChatGPT Projekt" as User
+
+rectangle "Notebook / Kontextquellen" as Notebook {
+  artifact "UNIFIED_CHATINFOS.md\n(secret-safe Master)" as Unified
+  artifact "Lana_Notitzbuch.md\n(Rohquelle, sensibel)" as RawNotebook
+  artifact "SharePoint / OneDrive\nDoku + Austausch" as SharePoint
+  artifact "Box.com\nNotizbuch / Austausch\n(Unbestaetigt)" as Box
+}
+
+rectangle "GitHub Gesamtprojekt" as GitHub {
+  component "carpu86/*" as GHCarpu86
+  component "carpuapp/*" as GHCarpuapp
+  component "lana-ki-de/*" as GHLanaKi
+  artifact "MCP Pflichtdateien\nREADME, PROJECT_CONTEXT,\nSECURITY, MCP, .mcp/*" as MCPFiles
+}
+
+cloud "Cloudflare Edge" as CF {
+  component "DNS / Zero Trust" as CFDNS
+  component "Tunnel" as CFTunnel
+  component "Gateway\nhttps://gateway.lana-ki.de" as Gateway
+}
+
+node "Node A\nHetzner Edge" as NodeA {
+  component "MCP Routing" as MCPRouting
+  component "Control Plane" as ControlPlane
+}
+
+node "Node B\nWindows Primary Compute" as NodeB {
+  component "LM Studio\n127.0.0.1:1234" as LMStudio
+  component "ComfyUI\n127.0.0.1:8188" as ComfyUI
+}
+
+node "Node C\nRunPod Burst GPU" as NodeC
+node "Node D\nDebian Admin / Monitoring\n192.168.178.101" as NodeD
+node "Node E\nGCP Sandbox Worker" as NodeE
+database "NAS / FritzBox\nVault + Cold Storage\nnur VPN" as NAS
+
+rectangle "AI Provider / Konten\nSecrets nur via Vault/op:// Referenzen" as AIAccounts {
+  component "OpenAI / ChatGPT" as OpenAI
+  component "Azure / M365 / Entra" as Azure
+  component "Google Cloud / Gemini / Vertex" as Google
+  component "Cloudflare AI / Workers" as CFAI
+  component "RunPod" as RunPod
+  component "Lokale Modelle" as LocalModels
+}
+
+User --> Gateway : MCP Streamable HTTP\n/mcp oder /sse
+Gateway --> CFTunnel
+CFTunnel --> NodeA
+NodeA --> MCPRouting
+MCPRouting --> NodeB : lokale Inferenz / Medien
+MCPRouting --> NodeC : Burst Jobs
+MCPRouting --> NodeE : temporaere Worker
+NodeD --> NodeA : Admin / Monitoring / Relay
+NodeB --> NAS : Backups / Archive\nnur VPN/offline-first
+
+Unified --> SharePoint : bereinigte Doku
+Unified --> Box : bereinigte Notizen\nfalls angebunden
+Unified --> GitHub : bereinigte MCP-/Projektdateien
+RawNotebook --> Unified : Sanitizing erforderlich
+
+GHCarpu86 --> MCPFiles
+GHCarpuapp --> MCPFiles
+GHLanaKi --> MCPFiles
+
+MCPRouting --> AIAccounts : Provider-Routing
+AIAccounts --> NAS : keine Klartext-Secrets\nnur sichere Referenzen
+
+note right of RawNotebook
+  Rohquelle enthaelt/enthielt Secrets.
+  Nicht direkt spiegeln.
+end note
+
+note bottom of Gateway
+  Live-Status Cloudflare/Gateway:
+  unbestaetigt bis Healthcheck.
+end note
+
+@enduml
