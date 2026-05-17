@@ -85,6 +85,37 @@ Dieses Repository darf **NICHT** enthalten:
 
 ---
 
+
+## ✅ Canonical Workspace Baseline (verbindlich)
+
+### Erlaubte lokale Hauptanker
+
+- `RuntimeRoot`: `C:\Carpuncle Cloud\Lana KI`
+- `Git-Ledger`: `C:\Carpuncle Cloud\Lana KI\Lana Git`
+- `DokuRoot`: `C:\Carpuncle Cloud\Lana KI\docs`
+- `Aktive .env`: `C:\Carpuncle Cloud\Lana KI\.env`
+- `UserRoot`: `C:\Carpuncle Cloud\carpuncle.V6`
+- `ToolRoot`: `C:\Carpuncle Cloud\Tools`
+
+### Nicht erlaubt (Legacy)
+
+- `T:\...` Pfade
+- `C:\Carpuncle Cloud\LanaApp` als produktiver Root
+
+### Architektur-Nodes (kanonisch)
+
+- **NODE A (Master / Public Edge):** Cloudflare Tunnel Gateway `gateway.lana-ki.de`, FastAPI Backend `:8030`
+- **NODE B (Windows RTX 4060):** lokale Inferenz (`127.0.0.1:1234`) + ComfyUI (`127.0.0.1:8188`), LAN `192.168.178.100`
+- **NODE C (RunPod / Hetzner CPX42):** Burst-Cloud-Worker
+- **NODE D (Debian Hub):** Orchestrator / Monitoring / Ingress, LAN `192.168.178.101`
+- **NAS (FritzBox):** `192.168.178.1`, Cold Storage / Backup / SQLite-Archive
+
+### Betriebsregel
+
+- `.env`, Vaults und Secret-Archive werden **nie** nach Git synchronisiert.
+- Lokale GitHub-Arbeit nur im `Git-Ledger`-Pfad.
+
+---
 ## 📄 Lizenz
 
 Aktuell **keine Open‑Source‑Lizenz**.  
